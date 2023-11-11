@@ -13,10 +13,12 @@ namespace Api.Controllers
     public class CosenoController : ControllerBase
     {
         private readonly HttpClient _httpClient;
+        private readonly ApplicationDbContext _dbContext;
 
-        public CosenoController(IHttpClientFactory httpClientFactory)
+        public CosenoController(IHttpClientFactory httpClientFactory,  ApplicationDbContext dbContext)
         {
             _httpClient = httpClientFactory.CreateClient();
+            _dbContext = dbContext;
         }
 
         [HttpGet]
@@ -42,6 +44,10 @@ namespace Api.Controllers
                         Valor_Coseno = artistRating.Value
                     }).ToList();
 
+                    // Guarda los datos en la base de datos
+                    _dbContext.Cosenos.AddRange(cosenoList);
+                    await _dbContext.SaveChangesAsync();
+
                     // Devuelve los datos como un objeto JSON
                     return Ok(cosenoList);
                 }
@@ -55,9 +61,6 @@ namespace Api.Controllers
                 return StatusCode(500, "Error al conectar con la API externa.");
             }
         }
-
-
-
 
     }
 }

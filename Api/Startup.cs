@@ -5,6 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 
+using Microsoft.EntityFrameworkCore; 
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+
+
+
+
 
 namespace Api
 {
@@ -22,6 +28,9 @@ namespace Api
             // ... Otras configuraciones de servicios ...
             services.AddHttpClient();
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddCors(options =>
             {
@@ -36,9 +45,9 @@ namespace Api
             services.AddControllers();
         }
 
-       public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
+
             // Configurar CORS antes de UseRouting y UseEndpoints
             app.UseCors("AllowAnyOrigin");
 
