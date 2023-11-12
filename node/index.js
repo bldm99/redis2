@@ -1,49 +1,48 @@
-const express = require('express');
-const sequelize = require("./util/database")
+// Archivo: index.js
+
+const express = require("express");
+const sequelize = require("./util/database");
+const User = require("./Models/user"); // Asegúrate de que la ruta sea correcta
 
 const app = express();
 const port = 3000;
 
-const pool = require('./db')
+app.get('/', async (req, res) => {
+  try {
+    // Consulta para obtener todos los usuarios
+    const users = await User.findAll();
 
-
-
-
-app.get('/', (req, res) => {
-  // Ejemplo de consulta
-  sequelize.query('SELECT * FROM Users', (err, result) => {
-    if (err) {
-      console.error('Error al ejecutar la consulta', err);
-      res.status(500).send('Error al ejecutar la consulta');
-    } else {
-      const rows = result.rows;
-      // Renderiza los resultados en una tabla HTML
-      const tableHtml = `
-        <table>
-          <thead>
+    // Renderiza los resultados en una tabla HTML
+    const tableHtml = `
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Valor_Coseno</th>
+            <!-- Agrega más columnas según tu tabla -->
+          </tr>
+        </thead>
+        <tbody>
+          ${users.map(user => `
             <tr>
-              <th>Nombre</th>
-              <th>Valor_Coseno</th>
-              <!-- Añade más columnas según tu tabla -->
+              <td>${user.nombre}</td>
+              <td>${user.valor_coseno}</td>
+              <!-- Agrega más celdas según tu tabla -->
             </tr>
-          </thead>
-          <tbody>
-            ${rows.map(row => `
-              <tr>
-                <td>${row.nombre}</td>
-                <td>${row.valor_coseno}</td>
-                <!-- Añade más celdas según tu tabla -->
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      `;
-      res.send(tableHtml);
-    }
-    pool.end(); // Cierra la conexión cuando hayas terminado
-  });
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+
+    res.send(tableHtml);
+  } catch (error) {
+    console.error('Error al obtener usuarios', error);
+    res.status(500).send('Error al obtener usuarios');
+  }
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
+  // Sincroniza los modelos con la base de datos antes de iniciar el servidor
+  await sequelize.sync();
   console.log(`Aplicación Node.js escuchando en http://localhost:${port}`);
 });
