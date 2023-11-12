@@ -1,4 +1,5 @@
 const express = require('express');
+const sequelize = require("./util/database")
 
 const app = express();
 const port = 3000;
@@ -10,7 +11,7 @@ const pool = require('./db')
 
 app.get('/', (req, res) => {
   // Ejemplo de consulta
-  pool.query('SELECT * FROM Users', (err, result) => {
+  sequelize.query('SELECT * FROM Users', (err, result) => {
     if (err) {
       console.error('Error al ejecutar la consulta', err);
       res.status(500).send('Error al ejecutar la consulta');

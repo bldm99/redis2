@@ -23,10 +23,13 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - "api"
-      - "db"  # Agrega la dependencia al servicio db
+      - "db"  
     environment:
-      DB_CONNECTION_STRING: "Host=db;Database=postgres;User Id=postgres;Password=postgres"
+      - PG_DB=postgres
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_HOST=db
+    restart: always
     networks:
       - dev
     
