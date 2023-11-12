@@ -11,6 +11,7 @@ app.get('/', async (req, res) => {
   try {
     // Consulta para obtener todos los usuarios
     const users = await User.findAll();
+    console.log(users)
 
     // Renderiza los resultados en una tabla HTML
     const tableHtml = `

@@ -30,8 +30,7 @@ services:
       - PG_PASSWORD=postgres
       - PG_HOST=db
     restart: always
-    networks:
-      - dev
+    
     
 
   db:

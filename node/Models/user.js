@@ -12,7 +12,7 @@ const User = sequelize.define("User", {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
-  // Agrega más campos según tu estructura de base de datos
+  tableName: 'users',
 });
 
 module.exports = User;
