@@ -11,5 +11,5 @@ public class ApplicationDbContext : DbContext
         : base(options)
     {
     }
-    public DbSet<Coseno> Cosenos { get; set; }
+    public DbSet<Cosenos> Cosenos { get; set; }
 }
