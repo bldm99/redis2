@@ -1,13 +1,15 @@
-FROM node:node:18-bullseye
+FROM node:18-bullseye
+# Create app directory 
+WORKDIR /usr/src/app 
 
-WORKDIR /usr/src/app
+# Install app dependencies 
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY package*.json ./ 
+RUN npm install 
 
-COPY package*.json ./
+# Bundle app source 
+COPY . . 
 
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+# Expose the port that the express are running 
+EXPOSE 3000 
+CMD [ "npm", "run","start" ]
