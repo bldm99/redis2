@@ -1,5 +1,5 @@
 -- init.sql
-\connect mydatabase
+\connect postgres
 
 -- Se crea la tabla 'Cosenos'
 CREATE TABLE Users
