@@ -5,11 +5,22 @@ C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\ne
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Api.runtimeconfig.json
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Api.dll
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Api.pdb
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Humanizer.dll
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Npgsql.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\System.CodeDom.dll
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\obj\Debug\net7.0\Api.csproj.AssemblyReference.cache
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\obj\Debug\net7.0\Api.GeneratedMSBuildEditorConfig.editorconfig
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\obj\Debug\net7.0\Api.AssemblyInfoInputs.cache
@@ -31,4 +42,3 @@ C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\obj\Debug\ne
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\obj\Debug\net7.0\Api.pdb
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\obj\Debug\net7.0\Api.genruntimeconfig.cache
 C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\obj\Debug\net7.0\ref\Api.dll
-C:\Sexto Semestre\Desarollo de A. Empresariales\Semana5\lab\Api\Api\bin\Debug\net7.0\Newtonsoft.Json.dll

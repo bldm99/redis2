@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Api.Models;
+using Api.Data;
 
 namespace Api.Controllers
 {

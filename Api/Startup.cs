@@ -6,7 +6,10 @@ using Microsoft.Extensions.Hosting;
 
 
 using Microsoft.EntityFrameworkCore; 
+using Microsoft.Extensions.Configuration;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Api.Models;
+using Api.Data; //nesesari
 
 
 
@@ -30,6 +33,7 @@ namespace Api
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                
 
 
             services.AddCors(options =>

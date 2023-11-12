@@ -1,3 +1,6 @@
+
+
+namespace Api.Models; //nesesari
 public class CosenoRegistrado
 {
     public int Id { get; set; }
