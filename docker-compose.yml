@@ -18,8 +18,7 @@ services:
       - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydatabase;User Id=myuser;Password=mypassword
     networks:
       - dev
-    command: >
-      bash -c "dotnet ef database update && dotnet watch run"
+   
 
   react:
     build:
@@ -38,10 +37,10 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
     volumes:
-      - app_data:/var/lib/postgresql/data
-      - ./dbscripts/seed.sql :/docker-entrypoint-initdb.d/seed.sql
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./postgres-data:/var/lib/postgresql/data
     networks:
       - dev
 
 volumes:
-  app_data:
+  postgres-data:
