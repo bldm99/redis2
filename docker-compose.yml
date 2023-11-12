@@ -15,6 +15,20 @@ services:
       - "db"
     environment:
       ConnectionStrings__DefaultConnection: "Host=db;Database=postgres;User Id=postgres;Password=postgres"
+  
+  node:
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "api"
+      - "db"  # Agrega la dependencia al servicio db
+    environment:
+      DB_CONNECTION_STRING: "Host=db;Database=postgres;User Id=postgres;Password=postgres"
+    networks:
+      - dev
     
 
   db:
