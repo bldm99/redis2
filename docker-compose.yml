@@ -1,27 +1,43 @@
 version: '3.8'
 
+networks:
+  dev:
+    driver: bridge
+
 services:
   api:
     build:
       context: ./Api
-      dockerfile: Dockerfile 
+      dockerfile: Dockerfile
     ports:
-      - "5500:80"  # Puedes ajustar el puerto según tu configuración
+      - "5500:80"
     depends_on:
-      - react
+      - "db"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydatabase;User Id=myuser;Password=mypassword
+    networks:
+      - dev
 
   react:
     build:
       context: ./react
       dockerfile: Dockerfile
     ports:
-      - "3000:80"  # Puedes ajustar el puerto según tu configuración
-  
+      - "3000:80"
+
   db:
     image: postgres:latest
     ports:
-      - "5432:5432"  # Puedes ajustar el puerto según tu configuración
+      - "5432:5432"
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
+    volumes:
+      - app_data:/var/lib/postgresql/data
+    networks:
+      - dev
+
+volumes:
+  app_data:
