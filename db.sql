@@ -14,3 +14,5 @@ ALTER TABLE "Cosenos" OWNER TO myuser;
 
 -- Se insertan datos en la tabla 'Cosenos'
 Insert into Cosenos(Nombre, Valor_Coseno) values( 'Prueba', 0.5);
+Insert into Cosenos(Nombre, Valor_Coseno) values( 'Prueba2', 0.9);
+Insert into Cosenos(Nombre, Valor_Coseno) values( 'Prueba3', 0.11);

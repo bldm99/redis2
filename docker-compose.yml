@@ -18,6 +18,9 @@ services:
       - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydatabase;User Id=myuser;Password=mypassword
     networks:
       - dev
+    command: >
+      bash -c "wait-for-it db:5432 -- dotnet ef database update && dotnet watch run"
+
    
 
   react:
