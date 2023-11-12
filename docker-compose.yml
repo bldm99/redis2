@@ -18,6 +18,8 @@ services:
       - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydatabase;User Id=myuser;Password=mypassword
     networks:
       - dev
+    command: >
+      bash -c "dotnet ef database update && dotnet watch run"
 
   react:
     build:

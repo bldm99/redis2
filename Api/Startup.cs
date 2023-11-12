@@ -31,8 +31,8 @@ namespace Api
             // ... Otras configuraciones de servicios ...
             services.AddHttpClient();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            /*services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));*/
                 
 
 
