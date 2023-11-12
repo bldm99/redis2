@@ -27,7 +27,7 @@ namespace Api.Controllers
         [Route("listarcoseno")]
         public async Task<IActionResult> Listar2()
         {
-            var apiUrl = "http://ip172-18-0-20-cl7uvq4snmng00eia4q0-5000.direct.labs.play-with-docker.com/api/valor";
+            var apiUrl = "http://ip172-18-0-18-cl82h18gftqg008a3fgg-5000.direct.labs.play-with-docker.com/api/valor";
             try
             {
                 var response = await _httpClient.GetAsync(apiUrl);
