@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231112023702_initial-migration")]
-    partial class initialmigration
+    [Migration("20231112085736_my")]
+    partial class my
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace Api.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Api.Models.Coseno", b =>
+            modelBuilder.Entity("Api.Models.Cosenos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

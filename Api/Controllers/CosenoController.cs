@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Api.Models;
 using Api.Data;
 using Microsoft.AspNetCore.Cors;
+using Models;
 
 
 namespace Api.Controllers
@@ -17,7 +18,7 @@ namespace Api.Controllers
         private readonly HttpClient _httpClient;
         private readonly ApplicationDbContext _dbContext;
 
-        public CosenoController(IHttpClientFactory httpClientFactory,  ApplicationDbContext dbContext)
+        public CosenoController(IHttpClientFactory httpClientFactory, ApplicationDbContext dbContext)
         {
             _httpClient = httpClientFactory.CreateClient();
             _dbContext = dbContext;
@@ -27,7 +28,7 @@ namespace Api.Controllers
         [Route("listarcoseno")]
         public async Task<IActionResult> Listar2()
         {
-            var apiUrl = "http://ip172-18-0-6-cl8614ufml8g00fqm6cg-5000.direct.labs.play-with-docker.com/api/valor";
+            var apiUrl = "http://ip172-18-0-66-cl8f5cssnmng00drvn60-5000.direct.labs.play-with-docker.com/api/valor";
             try
             {
                 var response = await _httpClient.GetAsync(apiUrl);
@@ -40,14 +41,22 @@ namespace Api.Controllers
                     var artistRatings = JsonConvert.DeserializeObject<Dictionary<string, double>>(content);
 
                     // Convierte el diccionario a una lista de objetos Coseno
-                    var cosenoList = artistRatings.Select(artistRating => new Coseno
+                    var cosenoList = artistRatings.Select(artistRating => new Cosenos
                     {
                         Nombre = artistRating.Key,
                         Valor_Coseno = artistRating.Value
                     }).ToList();
 
+                    // Convierte la lista de Cosenos a una lista de User
+                    var userList = cosenoList.Select(coseno => new User
+                    {
+                        Nombre = coseno.Nombre,
+                        Valor_Coseno = coseno.Valor_Coseno
+                    }).ToList();
+
                     // Guarda los datos en la base de datos
-                    _dbContext.Cosenos.AddRange(cosenoList);
+                    //_dbContext.Users.AddRange(cosenoList);
+                    _dbContext.Users.AddRange(userList);
                     await _dbContext.SaveChangesAsync();
 
                     // Devuelve los datos como un objeto JSON

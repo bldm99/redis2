@@ -10,25 +10,12 @@ services:
       context: ./Api
       dockerfile: Dockerfile
     ports:
-      - "5500:80"
+      - "8080:80"
     depends_on:
       - "db"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydatabase;User Id=myuser;Password=mypassword
-    networks:
-      - dev
-    command: >
-      bash -c "wait-for-it db:5432 -- dotnet ef database update && dotnet watch run"
-
-   
-
-  react:
-    build:
-      context: ./react
-      dockerfile: Dockerfile
-    ports:
-      - "3000:80"
+      ConnectionStrings__DefaultConnection: "Host=db;Database=postgres;User Id=postgres;Password=postgres"
+    
 
   db:
     image: postgres:latest
@@ -41,9 +28,7 @@ services:
       POSTGRES_PASSWORD: mypassword
     volumes:
       - ./db.sql:/docker-entrypoint-initdb.d/db.sql
-      - ./postgres-data:/var/lib/postgresql/data
-    networks:
-      - dev
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  postgres-data:
+  pgdata: {}
