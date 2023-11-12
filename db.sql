@@ -2,7 +2,7 @@
 \connect mydatabase
 
 -- Se crea la tabla 'Cosenos'
-CREATE TABLE Cosenos
+CREATE TABLE Users
 (
     Id serial PRIMARY KEY,
     Nombre VARCHAR (255) NOT NULL,
@@ -10,9 +10,9 @@ CREATE TABLE Cosenos
 );
 
 -- Se cambia el propietario de la tabla a 'myuser'
-ALTER TABLE "Cosenos" OWNER TO myuser;
+ALTER TABLE "Users" OWNER TO postgres;
 
 -- Se insertan datos en la tabla 'Cosenos'
-Insert into Cosenos(Nombre, Valor_Coseno) values( 'Prueba', 0.5);
-Insert into Cosenos(Nombre, Valor_Coseno) values( 'Prueba2', 0.9);
-Insert into Cosenos(Nombre, Valor_Coseno) values( 'Prueba3', 0.11);
+Insert into Users(Nombre, Valor_Coseno) values( 'Prueba', 0.5);
+Insert into Users(Nombre, Valor_Coseno) values( 'Prueba2', 0.9);
+Insert into Users(Nombre, Valor_Coseno) values( 'Prueba3', 0.11);
