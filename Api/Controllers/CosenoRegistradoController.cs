@@ -23,16 +23,19 @@ namespace Api.Controllers
         public IActionResult ListarCosenosRegistrados()
         {
             // Obtén todos los registros de la base de datos
-            List<CosenoRegistrado> cosenosRegistrados = _dbContext.Users
-                .Select(c => new CosenoRegistrado
+            List<Pelirating> resratings = _dbContext.Users
+                .Select(p => new Pelirating
                 {
-                    Id = c.Id,
+                    /*Id = c.Id,
                     Nombre = c.Nombre,
-                    Valor_Coseno = c.Valor_Coseno
+                    Valor_Coseno = c.Valor_Coseno*/
+                    Id = p.Id,
+                    Conteo = p.Conteo,
+                    Rating = p.Rating
                 })
                 .ToList();
 
-            return Ok(cosenosRegistrados);
+            return Ok(resratings);
         }
     }
 }

@@ -1,35 +1,149 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import CSVReader from 'react-csv-reader';
+import * as Data from "./Data";
+
+
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, Legend, Tooltip } from 'recharts';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [datos, setDatos] = useState(Data.default);
+
+  const [rat, setRat] = useState([])
+
+  useEffect(() => {
+    const obtenerdata = async () => {
+      try {
+        await Data.Ratings(setRat)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    obtenerdata()
+
+  }, []);
+
+  console.log(rat)
+
+
+
+  const handleCSVUpload = (data) => {
+    // El parámetro 'data' contendrá los datos del archivo CSV en formato de matriz
+    console.log('Datos cargados desde CSV:', data);
+    setDatos(data)
+    // Aquí podrías procesar los datos como desees y, si es necesario, enviarlos al servidor
+  };
+
+  const registrarDatos = async () => {
+    try {
+      await Data.postRiesgos(datos);
+      console.log("Datos registrados correctamente");
+      await Data.getListarCoseno()
+      console.log("registro correcto")
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+
+  const registrarDatosx = async () => {
+    try {
+
+      await Data.getListarCoseno()
+      console.log("registro correcto")
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+
+
+
+
+  const valoresCoseno = rat.map(item => item.valor_Coseno);
+  const sumaValores = valoresCoseno.reduce((total, valor) => total + valor, 0);
+
+  console.log('Suma de todos los valores:', sumaValores);
+
+
+
+
+  const porc = ({ payload, x, y, width, height, value }) => {
+    const xy = (value.toFixed(1) * 100) / sumaValores; // Cambiado a toFixed(1)
+    const percentage = `${xy.toFixed(1)}%`; // Ajustado a un solo decimal
+    return (
+      <text x={x + width / 2} y={y} fill="#666" textAnchor="middle" dy={-6}>
+        {percentage}
+      </text>
+    );
+  };
+
+
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {/* Agrega el componente CSVReader para cargar archivos CSV */}
+        <CSVReader
+          onFileLoaded={handleCSVUpload}
+          parserOptions={{ header: true, skipEmptyLines: true }}
+        />
+        <button onClick={registrarDatos}>Registrar datos</button>
+
+        <button onClick={registrarDatosx}>Registrar en .NET</button>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Valor Coseno</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rat.map(item => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.nombre}</td>
+                <td>{item.valor_Coseno}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <ResponsiveContainer width="80%" aspect={2} >
+          <BarChart
+            data={rat}
+            width={500}
+            height={300}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5
+            }}
+          >
+            <CartesianGrid strokeDasharray="4 1 2" />
+            <XAxis dataKey="nombre" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="valor_Coseno" fill="orange"
+
+              label={porc}
+
+            >
+
+
+            </Bar>
+
+
+
+          </BarChart>
+        </ResponsiveContainer>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -48,10 +48,12 @@ namespace Api.Controllers
                     }).ToList();
 
                     // Convierte la lista de Cosenos a una lista de User
-                    var userList = cosenoList.Select(coseno => new User
+                    var userList = cosenoList.Select(x => new User
                     {
-                        Nombre = coseno.Nombre,
-                        Valor_Coseno = coseno.Valor_Coseno
+                        /*Nombre = coseno.Nombre,
+                        Valor_Coseno = coseno.Valor_Coseno*/
+                        Conteo = x.Conteo
+                        Rating = x.Rating
                     }).ToList();
 
                     // Guarda los datos en la base de datos
