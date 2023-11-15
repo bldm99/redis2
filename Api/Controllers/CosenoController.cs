@@ -43,8 +43,10 @@ namespace Api.Controllers
                     // Convierte el diccionario a una lista de objetos Coseno
                     var cosenoList = artistRatings.Select(artistRating => new Cosenos
                     {
-                        Nombre = artistRating.Key,
-                        Valor_Coseno = artistRating.Value
+                        /*Nombre = artistRating.Key,
+                        Valor_Coseno = artistRating.Value*/
+                        Conteo = artistRating.Key,
+                        Rating = artistRating.Value
                         
                     }).ToList();
 
