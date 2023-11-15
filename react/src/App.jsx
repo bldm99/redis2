@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CSVReader from 'react-csv-reader';
+import "./App.css"
 import * as Data from "./Data";
 
 
@@ -50,6 +51,7 @@ function App() {
     try {
 
       await Data.getListarCoseno()
+      await Data.Ratings(setRat)
       console.log("registro correcto")
     } catch (error) {
       console.error("Error al registrar datos:", error);
@@ -82,16 +84,23 @@ function App() {
   return (
     <>
       <div>
-        {/* Agrega el componente CSVReader para cargar archivos CSV */}
-        <CSVReader
-          onFileLoaded={handleCSVUpload}
-          parserOptions={{ header: true, skipEmptyLines: true }}
-        />
-        <button onClick={registrarDatos}>Registrar datos</button>
+        <div className='cargar'>
+          <div>
+            <img src="https://logowik.com/content/uploads/images/csv-file-format8052.jpg" alt="CSV File Format" width={50} />
+          </div>
+          <CSVReader
+            onFileLoaded={handleCSVUpload}
+            parserOptions={{ header: true, skipEmptyLines: true }}
+          />
+        </div>
 
-        <button onClick={registrarDatosx}>Registrar en .NET</button>
 
-        <table>
+        <div className='btns'>
+          <button onClick={registrarDatos}>Registrar datos de csv</button>
+          <button onClick={registrarDatosx}>Generar resultados</button>
+        </div>
+
+        {/*<table>
           <thead>
             <tr>
               <th>ID</th>
@@ -108,38 +117,42 @@ function App() {
               </tr>
             ))}
           </tbody>
-        </table>
+            </table>*/}
 
-        <ResponsiveContainer width="80%" aspect={2} >
-          <BarChart
-            data={rat}
-            width={500}
-            height={300}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5
-            }}
-          >
-            <CartesianGrid strokeDasharray="4 1 2" />
-            <XAxis dataKey="nombre" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="valor_Coseno" fill="orange"
-
-              label={porc}
-
+        <div className='grafico'>
+          <ResponsiveContainer width="80%" aspect={2} >
+            <BarChart
+              data={rat}
+              width={500}
+              height={300}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5
+              }}
             >
+              <CartesianGrid strokeDasharray="4 1 2" />
+              <XAxis dataKey="nombre" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="valor_Coseno" fill="orange"
+
+                label={porc}
+
+              >
 
 
-            </Bar>
+              </Bar>
 
 
 
-          </BarChart>
-        </ResponsiveContainer>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+
 
       </div>
     </>

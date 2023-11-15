@@ -1,4 +1,4 @@
-/*#root {
+#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,32 @@
 
 .read-the-docs {
   color: #888;
-}*/
+}
+.cargar{
+  background-color: green;
+  padding: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2px;
+}
+.grafico{
+  margin-top: 20px;
+  background-color: rgb(235, 224, 224);
+}
+.btns{
+  display: flex;
+  background: rgb(8, 0, 0);
+  gap: 10px;
+  padding: 10px;
+}
+
+.btns button{
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(187, 128, 1);
+  font-weight: bolder;
+  cursor: pointer;
+}
