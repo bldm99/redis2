@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const redis = "http://ip172-18-0-24-cl97gnogftqg00bpomtg-5000.direct.labs.play-with-docker.com/api/valor";
+const redis = "http://localhost:5000/api/valor";
 
 
 const net = "http://ip172-18-0-42-cl97gnogftqg00bpomtg-8080.direct.labs.play-with-docker.com/"
