@@ -16,8 +16,8 @@ namespace Models //nesesari
         [Column("id")]
         public int Id { get; set; }
         [Column("conteo")]
-        public string Nombre { get; set; }
-         [Column("valor_coseno")]
-        public double Valor_Coseno { get; set; }
+        public string Conteo { get; set; }
+         [Column("rating")]
+        public double Rating { get; set; }
     }
 }
