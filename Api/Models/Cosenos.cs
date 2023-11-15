@@ -10,8 +10,4 @@ public class Cosenos
     public int Id { get; set; }
     public string Nombre { get; set; }
     public double Valor_Coseno { get; set; }
-
-    /*public int Id { get; set; }
-    public string Conteo { get; set; }
-    public double Rating { get; set; }*/
 }

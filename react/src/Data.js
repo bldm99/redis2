@@ -3,7 +3,7 @@ import axios from "axios";
 const redis = "http://ip172-18-0-56-cla0tsufml8g00bpg90g-5000.direct.labs.play-with-docker.com/api/valor";
 
 
-const net = "http://ip172-18-0-32-cla0tsufml8g00bpg90g-8080.direct.labs.play-with-docker.com/"
+const net = "http://ip172-18-0-27-cla0tsufml8g00bpg90g-8080.direct.labs.play-with-docker.com/"
 export const postRiesgos = async (obj) => {
     try {
         await axios.post(`${redis}`, {
