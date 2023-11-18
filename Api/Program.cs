@@ -12,6 +12,9 @@ builder.Services.AddHttpClient(); //change importnant for api for api
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
   options.UseNpgsql(conn));
 
+builder.Services.AddDbContext<VeciDbContext>(options =>
+  options.UseNpgsql(conn));
+
 // Add services to the container.
 
 builder.Services.AddControllers();

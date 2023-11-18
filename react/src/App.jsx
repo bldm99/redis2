@@ -26,14 +26,16 @@ function App() {
   }, []);
 
   console.log(rat)
+  
 
 
 
   const handleCSVUpload = (data) => {
     // El parámetro 'data' contendrá los datos del archivo CSV en formato de matriz
     console.log('Datos cargados desde CSV:', data);
-    setDatos(data)
-    // Aquí podrías procesar los datos como desees y, si es necesario, enviarlos al servidor
+    //console.log('Primeros 10 datos cargados desde CSV:', data.slice(0, 10));
+    //const yu = data.slice(0, 10)
+    setDatos(data);
   };
 
   const registrarDatos = async () => {
@@ -84,6 +86,7 @@ function App() {
   return (
     <>
       <div>
+        
         <div className='cargar'>
           <div>
             <img src="https://logowik.com/content/uploads/images/csv-file-format8052.jpg" alt="CSV File Format" width={50} />
