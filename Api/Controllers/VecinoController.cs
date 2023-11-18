@@ -24,10 +24,10 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [Route("listarvecino")]
+        [Route("registervecino")]
         public async Task<IActionResult> Listar2()
         {
-            var apiUrl = "http://ip172-18-0-66-cl8f5cssnmng00drvn60-5000.direct.labs.play-with-docker.com/api/valor";
+            var apiUrl = "http://ip172-18-0-88-clch2nogftqg00cp27cg-5000.direct.labs.play-with-docker.com/api/valor";
             try
             {
                 var response = await _httpClient.GetAsync(apiUrl);

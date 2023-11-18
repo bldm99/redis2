@@ -9,7 +9,7 @@ namespace Api.Data;
 public class VeciDbContext : DbContext
 {
     
-    public VeciDbContext(DbContextOptions<ApplicationDbContext> options)
+    public VeciDbContext(DbContextOptions<VeciDbContext> options)
         : base(options)
     {
     }
