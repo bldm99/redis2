@@ -24,6 +24,8 @@ namespace Api.Controllers
         {
             // Obtén todos los registros de la base de datos
             List<Vecinoget> vervecinos = _dbContext.Vecinos
+                .OrderBy(v => v.Distancia)
+                .Take(10)
                 .Select(v => new Vecinoget
                 {
                     Id = v.Id,

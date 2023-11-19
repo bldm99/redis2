@@ -13,10 +13,14 @@ function App() {
 
   const [rat, setRat] = useState([])
 
+  const [pelicula , setPelicula] = useState([])
+
   useEffect(() => {
     const obtenerdata = async () => {
       try {
+        await Data.getPeliculas(setPelicula)
         await Data.Ratings(setRat)
+        
       } catch (error) {
         console.log(error)
       }
@@ -25,8 +29,10 @@ function App() {
 
   }, []);
 
-  console.log(rat)
-  
+  //console.log(rat)
+  console.log(pelicula)
+
+
 
 
 
@@ -63,7 +69,7 @@ function App() {
 
 
 
-  const valoresCoseno = rat.map(item => item.valor_Coseno);
+  const valoresCoseno = rat.map(item => item.distancia);
   const sumaValores = valoresCoseno.reduce((total, valor) => total + valor, 0);
 
   console.log('Suma de todos los valores:', sumaValores);
@@ -86,7 +92,7 @@ function App() {
   return (
     <>
       <div>
-        
+
         <div className='cargar'>
           <h1>hola</h1>
           <div>
@@ -104,26 +110,35 @@ function App() {
           <button onClick={registrarDatosx}>Generar resultados</button>
         </div>
 
-        {/*<table>
+        <div>
+          <div>Peliculas recomendadas</div>
+          <div>
+            <div>
+              
+            </div>
+          </div>
+        </div>
+
+        <table>
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nombre</th>
-              <th>Valor Coseno</th>
+              <th>Id Vecino</th>
+              <th>Distancia</th>
             </tr>
           </thead>
           <tbody>
             {rat.map(item => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td>{item.nombre}</td>
-                <td>{item.valor_Coseno}</td>
+                <td>{item.id_vecino}</td>
+                <td>{item.distancia}</td>
               </tr>
             ))}
           </tbody>
-            </table>*/}
+        </table>
 
-        <div className='grafico'>
+        {/*<div className='grafico'>
           <ResponsiveContainer width="80%" aspect={2} >
             <BarChart
               data={rat}
@@ -137,11 +152,11 @@ function App() {
               }}
             >
               <CartesianGrid strokeDasharray="4 1 2" />
-              <XAxis dataKey="nombre" />
+              <XAxis dataKey="id_vecino" />
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="valor_Coseno" fill="orange"
+              <Bar dataKey="distancia" fill="orange"
 
                 label={porc}
 
@@ -154,7 +169,7 @@ function App() {
 
             </BarChart>
           </ResponsiveContainer>
-        </div>
+            </div>*/}
 
 
 

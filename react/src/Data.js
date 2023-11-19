@@ -1,16 +1,16 @@
 import axios from "axios";
 
-const redis = "http://ip172-18-0-88-clch2nogftqg00cp27cg-5000.direct.labs.play-with-docker.com/";
+const redis = "http://ip172-18-0-100-cld2djmfml8g00e3b6n0-5000.direct.labs.play-with-docker.com/";
 
 
-const net = "http://ip172-18-0-40-clch2nogftqg00cp27cg-8080.direct.labs.play-with-docker.com/"
+const net = "http://ip172-18-0-24-clch2nogftqg00cp27cg-8080.direct.labs.play-with-docker.com/"
 export const postRiesgos = async (obj) => {
     try {
         await axios.post(`${redis}api/valor`, {
             obj,
-            col1:"userId",
-            col2:"movieId",
-            col3:"rating"
+            col1: "userId",
+            col2: "movieId",
+            col3: "rating"
         });
 
     } catch (error) {
@@ -18,13 +18,25 @@ export const postRiesgos = async (obj) => {
     }
 };
 
+export const getPeliculas = async (xset) => {
+    try {
+        const response = await axios.get(`${redis}api/peliculas`);
+        xset(response.data)
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener Peliculas recomendadas:", error);
+        throw error;
+    }
+};
+
+
 export const getListarCoseno = async () => {
     try {
-        const response = await axios.get(`${net}data/listarcoseno`);
-        return response.data; 
+        const response = await axios.get(`${net}data/registervecino`);
+        return response.data;
     } catch (error) {
         console.error("Error al obtener datos de listarcoseno:", error);
-        throw error; 
+        throw error;
     }
 };
 
@@ -32,12 +44,12 @@ export const getListarCoseno = async () => {
 
 export const Ratings = async (xset) => {
     try {
-        const response = await axios.get(`${net}data/listarcosenosregistrados`);
+        const response = await axios.get(`${net}data/listarvecinos`);
         xset(response.data)
-        return response.data; 
+        return response.data;
     } catch (error) {
         console.error("Error al obtener datos de cosenosregistrados:", error);
-        throw error; 
+        throw error;
     }
 };
 
