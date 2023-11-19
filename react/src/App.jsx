@@ -13,14 +13,16 @@ function App() {
 
   const [rat, setRat] = useState([])
 
-  const [pelicula , setPelicula] = useState([])
+  const [pelicula, setPelicula] = useState([])
+
+  const [usuario, setUsuario] = useState(0)
 
   useEffect(() => {
     const obtenerdata = async () => {
       try {
-        await Data.getPeliculas(setPelicula)
+
         await Data.Ratings(setRat)
-        
+
       } catch (error) {
         console.log(error)
       }
@@ -32,6 +34,10 @@ function App() {
   //console.log(rat)
   console.log(pelicula)
 
+
+  const handleInputChange = (event) => {
+    setUsuario(event.target.value);
+  };
 
 
 
@@ -46,7 +52,7 @@ function App() {
 
   const registrarDatos = async () => {
     try {
-      await Data.postRiesgos(datos);
+      await Data.postRiesgos(datos , usuario);
       console.log("Datos registrados correctamente");
       await Data.getListarCoseno()
       console.log("registro correcto")
@@ -87,6 +93,14 @@ function App() {
     );
   };
 
+  const Recomend = async () => {
+    try {
+      await Data.getPeliculas(setPelicula)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
 
   return (
@@ -108,35 +122,66 @@ function App() {
         <div className='btns'>
           <button onClick={registrarDatos}>Registrar datos de csv</button>
           <button onClick={registrarDatosx}>Generar resultados</button>
-        </div>
-
-        <div>
-          <div>Peliculas recomendadas</div>
           <div>
-            <div>
-              
-            </div>
+            <label htmlFor="usuarioInput">Usuario:</label>
+            <input
+              type="text"
+              id="usuarioInput"
+              value={usuario}
+              onChange={handleInputChange}
+            />
+            <p>El valor del usuario es: {usuario}</p>
           </div>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Id Vecino</th>
-              <th>Distancia</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rat.map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.id_vecino}</td>
-                <td>{item.distancia}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className='valores'>
+          <div className='table-vecinos'>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Id Vecino</th>
+                  <th>Distancia</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rat.map(item => (
+                  <tr key={item.id}>
+                    <td>{item.id}</td>
+                    <td>{item.id_vecino}</td>
+                    <td>{item.distancia}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className='cont-recomend' >
+            <div className='title'>
+              Peliculas recomendadas
+              <button onClick={Recomend}  >Ver</button>
+            </div>
+            <div className='box-peli'>
+              <div className='imagenes'>
+                {
+                  pelicula.map(pe => (
+                    <div className='netflix'>
+                      <img src={pe.imagen} alt="" />
+                      <p>Pelicula:{pe.id_movie}</p>
+                    </div>
+
+                  ))
+                }
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
 
         {/*<div className='grafico'>
           <ResponsiveContainer width="80%" aspect={2} >

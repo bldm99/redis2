@@ -68,3 +68,106 @@
   font-weight: bolder;
   cursor: pointer;
 }
+
+.valores{
+  width: 100%;
+  /*background: red;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.valores .table-vecinos{
+  /*background: yellowgreen;*/
+  width: 100%;
+}
+
+.valores .table-vecinos table{
+  
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+
+thead {
+  background-color: green;
+  color: white;
+}
+
+th{
+  font-weight: bold;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  
+}
+
+/* Optional: Add some hover effect */
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/**---------------------------------------------*/
+
+.valores .cont-recomend{
+  background: black;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+
+.valores .cont-recomend .title{
+  background: red;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.valores .cont-recomend .title button{
+  border: none;
+  background: white;
+  padding: 0px 15px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.valores .cont-recomend .box-peli{
+  /*background: yellow;*/
+}
+.valores .cont-recomend .box-peli .imagenes{
+  display: flex;
+  flex-wrap: wrap;
+  /*background: greenyellow;*/
+  justify-content: space-between;
+  padding: 5px;
+  gap: 5px;
+  
+}
+
+
+.box-peli .imagenes .netflix{
+  background: wheat;
+  width: 20%;
+}
+
+.box-peli .imagenes .netflix p{
+  margin: 0;
+  padding: 2px;
+  color: black;
+}
+
+.box-peli .imagenes .netflix img{
+  box-sizing: border-box;
+  width: 100%;
+}

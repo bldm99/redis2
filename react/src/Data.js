@@ -1,16 +1,20 @@
 import axios from "axios";
 
-const redis = "http://ip172-18-0-100-cld2djmfml8g00e3b6n0-5000.direct.labs.play-with-docker.com/";
+const redis = "http://ip172-18-0-70-cld5caogftqg00e6cq40-5000.direct.labs.play-with-docker.com/";
 
 
-const net = "http://ip172-18-0-24-clch2nogftqg00cp27cg-8080.direct.labs.play-with-docker.com/"
-export const postRiesgos = async (obj) => {
+const net = "http://ip172-18-0-57-cld5caogftqg00e6cq40-8080.direct.labs.play-with-docker.com/"
+
+
+//Registrando datos de csv en redis
+export const postRiesgos = async (obj , numero) => {
     try {
         await axios.post(`${redis}api/valor`, {
             obj,
             col1: "userId",
             col2: "movieId",
-            col3: "rating"
+            col3: "rating",
+            numero
         });
 
     } catch (error) {
@@ -18,9 +22,10 @@ export const postRiesgos = async (obj) => {
     }
 };
 
+//Obteniendo peliculas recomendadas a traves de .Net
 export const getPeliculas = async (xset) => {
     try {
-        const response = await axios.get(`${redis}api/peliculas`);
+        const response = await axios.get(`${net}data/recomendacion`);
         xset(response.data)
         return response.data;
     } catch (error) {
@@ -30,6 +35,7 @@ export const getPeliculas = async (xset) => {
 };
 
 
+//Registrando datos de redis en postgress mediante .Net
 export const getListarCoseno = async () => {
     try {
         const response = await axios.get(`${net}data/registervecino`);
@@ -41,7 +47,7 @@ export const getListarCoseno = async () => {
 };
 
 
-
+//Obtwminedo vecinos cercanos mediante .Net registrado en db
 export const Ratings = async (xset) => {
     try {
         const response = await axios.get(`${net}data/listarvecinos`);
