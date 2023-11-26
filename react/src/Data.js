@@ -1,16 +1,30 @@
 import axios from "axios";
 
-const redis = "http://ip172-18-0-70-cld5caogftqg00e6cq40-5000.direct.labs.play-with-docker.com/";
+const redis = "http://ip172-18-0-22-clg0gbssnmng00a90n4g-5000.direct.labs.play-with-docker.com/";
+const redis2 = "http://ip172-18-0-22-clg0gbssnmng00a90n4g-5001.direct.labs.play-with-docker.com/";
 
 
-const net = "http://ip172-18-0-57-cld5caogftqg00e6cq40-8080.direct.labs.play-with-docker.com/"
+
+const net = "http://ip172-18-0-40-cldnes0gftqg00e6e1a0-8080.direct.labs.play-with-docker.com/"
 
 
-//Registrando datos de csv en redis
-export const postRiesgos = async (obj , numero) => {
+//Registrando datos de csv a redis
+export const postCsv = async (obj) => {
+    try {-
+        await axios.post(`${redis}api/csv`, {
+            obj
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+//Registrando datos apartir del csv en redis
+export const postRiesgos = async (/*obj ,*/ numero) => {
     try {
         await axios.post(`${redis}api/valor`, {
-            obj,
+            /*obj,*/
             col1: "userId",
             col2: "movieId",
             col3: "rating",
@@ -18,7 +32,22 @@ export const postRiesgos = async (obj , numero) => {
         });
 
     } catch (error) {
-        console.log(error);
+        //console.log(error);
+        console.log("Error ala almacebar los datos en api1");
+    }
+};
+export const postRiesgosdos = async (/*obj ,*/ numero) => {
+    try {
+        await axios.post(`${redis2}apix/valor`, {
+            /*obj,*/
+            col1: "userId",
+            col2: "movieId",
+            col3: "rating",
+            numero
+        });
+
+    } catch (error) {
+        console.log("Error ala almacebar los datos de 301 a mas");
     }
 };
 

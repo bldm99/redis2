@@ -50,9 +50,19 @@ function App() {
     setDatos(data);
   };
 
+  const registrarCsv = async () => {
+    try {
+      await Data.postCsv(datos);
+      console.log("Datos registrados correctamente");
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+
   const registrarDatos = async () => {
     try {
-      await Data.postRiesgos(datos , usuario);
+      await Data.postRiesgos(/*datos ,*/ usuario);
+      await Data.postRiesgosdos(/*datos ,*/ usuario);
       console.log("Datos registrados correctamente");
       await Data.getListarCoseno()
       console.log("registro correcto")
@@ -117,10 +127,13 @@ function App() {
             parserOptions={{ header: true, skipEmptyLines: true }}
           />
         </div>
+        <div>
+        <button onClick={registrarCsv}>Cargar csv</button>
+        </div>
 
 
         <div className='btns'>
-          <button onClick={registrarDatos}>Registrar datos de csv</button>
+          <button onClick={registrarDatos}>Analizar datos de csv</button>
           <button onClick={registrarDatosx}>Generar resultados</button>
           <div>
             <label htmlFor="usuarioInput">Usuario:</label>
