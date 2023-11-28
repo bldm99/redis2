@@ -17,7 +17,9 @@ function App() {
 
   const [usuario, setUsuario] = useState(0)
 
-  useEffect(() => {
+  const [inicio, setInicio] = useState("0")
+
+  /*useEffect(() => {
     const obtenerdata = async () => {
       try {
 
@@ -29,10 +31,10 @@ function App() {
     }
     obtenerdata()
 
-  }, []);
+  }, []);*/
 
   //console.log(rat)
-  console.log(pelicula)
+  //console.log(pelicula)
 
 
   const handleInputChange = (event) => {
@@ -61,11 +63,51 @@ function App() {
 
   const registrarDatos = async () => {
     try {
+      const inicio = new Date();
+
       await Data.postRiesgos(/*datos ,*/ usuario);
+      /*await Data.postRiesgosdos(usuario);
+      await Data.postRiesgostres( usuario);
+      await Data.postRiesgoscuatro( usuario);
+      await Data.postRiesgoscinco(usuario);*/
+
+      const fin = new Date();
+      const tiempoDeEjecucion = fin - inicio;
+
+      console.log(`Datos registrados correctamente de api1. Tiempo de ejecución: ${tiempoDeEjecucion} milisegundos`);
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+
+  const registrarDatosdos = async () => {
+    try {
       await Data.postRiesgosdos(/*datos ,*/ usuario);
-      console.log("Datos registrados correctamente");
-      await Data.getListarCoseno()
-      console.log("registro correcto")
+      console.log("Datos registrados correctamente de api2");
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+  const registrarDatostres = async () => {
+    try {
+      await Data.postRiesgostres(/*datos ,*/ usuario);
+      console.log("Datos registrados correctamente de api3");
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+  const registrarDatoscuatro = async () => {
+    try {
+      await Data.postRiesgoscuatro(/*datos ,*/ usuario);
+      console.log("Datos registrados correctamente de api4");
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+  const registrarDatoscinco = async () => {
+    try {
+      await Data.postRiesgoscinco(/*datos ,*/ usuario);
+      console.log("Datos registrados correctamente de api5");
     } catch (error) {
       console.error("Error al registrar datos:", error);
     }
@@ -88,7 +130,7 @@ function App() {
   const valoresCoseno = rat.map(item => item.distancia);
   const sumaValores = valoresCoseno.reduce((total, valor) => total + valor, 0);
 
-  console.log('Suma de todos los valores:', sumaValores);
+  //console.log('Suma de todos los valores:', sumaValores);
 
 
 
@@ -111,6 +153,26 @@ function App() {
     }
   }
 
+  const handleCambioInicio = () => {
+    setInicio("1");
+  };
+
+
+
+
+
+  const handleClickBoton1 = () => {
+    console.log('Soy el botón 1');
+  };
+
+  const handleClickBoton2 = () => {
+    console.log('Soy el botón 2');
+  };
+
+  const handleClickBoton3 = () => {
+    console.log('Soy el botón 3');
+  };
+
 
 
   return (
@@ -128,13 +190,24 @@ function App() {
           />
         </div>
         <div>
-        <button onClick={registrarCsv}>Cargar csv</button>
+          <button onClick={registrarCsv}>Cargar csv</button>
         </div>
 
 
         <div className='btns'>
           <button onClick={registrarDatos}>Analizar datos de csv</button>
+          <button onClick={() => { registrarDatos(); registrarDatosdos(); registrarDatostres(); registrarDatoscuatro(); registrarDatoscinco(); }}>Api1 , Api2 ,Api3, Api4, Api5</button>
+          <button onClick={() => { registrarDatos(); }}>Api1</button>
+          <button onClick={() => { registrarDatosdos() }}>Api2</button>
+          <button onClick={() => { registrarDatostres() }}>Api3</button>
+          <button onClick={() => { registrarDatoscuatro() }}>Api4</button>
+          <button onClick={() => { registrarDatoscinco() }}>Api5</button>
           <button onClick={registrarDatosx}>Generar resultados</button>
+          <div>
+            <p>Inicio: {inicio}</p>
+            <button onClick={handleCambioInicio}>Cambiar a 1</button>
+          </div>
+
           <div>
             <label htmlFor="usuarioInput">Usuario:</label>
             <input
@@ -228,7 +301,6 @@ function App() {
             </BarChart>
           </ResponsiveContainer>
             </div>*/}
-
 
 
       </div>

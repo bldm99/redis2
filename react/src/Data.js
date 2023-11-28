@@ -1,7 +1,10 @@
 import axios from "axios";
 
-const redis = "http://ip172-18-0-22-clg0gbssnmng00a90n4g-5000.direct.labs.play-with-docker.com/";
-const redis2 = "http://ip172-18-0-22-clg0gbssnmng00a90n4g-5001.direct.labs.play-with-docker.com/";
+const redis = "http://ip172-18-0-59-clivus0gftqg008se760-5000.direct.labs.play-with-docker.com/";
+const redis2 = "http://ip172-18-0-79-clivus0gftqg008se760-5001.direct.labs.play-with-docker.com/";
+const redis3 = "http://ip172-18-0-79-clivus0gftqg008se760-5002.direct.labs.play-with-docker.com/";
+const redis4 = "http://ip172-18-0-79-clivus0gftqg008se760-5003.direct.labs.play-with-docker.com/";
+const redis5 = "http://ip172-18-0-79-clivus0gftqg008se760-5004.direct.labs.play-with-docker.com/";
 
 
 
@@ -30,7 +33,7 @@ export const postRiesgos = async (/*obj ,*/ numero) => {
             col3: "rating",
             numero
         });
-
+        
     } catch (error) {
         //console.log(error);
         console.log("Error ala almacebar los datos en api1");
@@ -48,6 +51,49 @@ export const postRiesgosdos = async (/*obj ,*/ numero) => {
 
     } catch (error) {
         console.log("Error ala almacebar los datos de 301 a mas");
+    }
+};
+
+export const postRiesgostres = async (/*obj ,*/ numero) => {
+    try {
+        await axios.post(`${redis3}apiz/valor`, {
+            /*obj,*/
+            col1: "userId",
+            col2: "movieId",
+            col3: "rating",
+            numero
+        });
+
+    } catch (error) {
+        console.log("Error ala almacebar los datos para instancia 3");
+    }
+};
+export const postRiesgoscuatro = async (/*obj ,*/ numero) => {
+    try {
+        await axios.post(`${redis4}apia/valor`, {
+            /*obj,*/
+            col1: "userId",
+            col2: "movieId",
+            col3: "rating",
+            numero
+        });
+
+    } catch (error) {
+        console.log("Error ala almacebar los para instancia 4");
+    }
+};
+export const postRiesgoscinco = async (/*obj ,*/ numero) => {
+    try {
+        await axios.post(`${redis5}apib/valor`, {
+            /*obj,*/
+            col1: "userId",
+            col2: "movieId",
+            col3: "rating",
+            numero
+        });
+
+    } catch (error) {
+        console.log("Error ala almacebar los datos para instancia 5");
     }
 };
 
