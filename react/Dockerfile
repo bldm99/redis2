@@ -13,7 +13,7 @@
 
 
 # Usa una imagen base con Node.js
-FROM node:18-alpine3.17 as build
+FROM node:14-alpine
 
 # Establece el directorio de trabajo en la aplicación React
 WORKDIR /app
