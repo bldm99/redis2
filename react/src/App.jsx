@@ -54,8 +54,70 @@ function App() {
 
   const registrarCsv = async () => {
     try {
-      await Data.postCsv(datos);
-      console.log("Datos registrados correctamente");
+      const inicio = new Date();
+      //await Data.postCsv(datos);
+      await Data.postCsv(usuario);
+      const fin = new Date();
+      const tiempoDeEjecucion = fin - inicio;
+
+      console.log(`Datos 1 registrados de csv correctamente. Tiempo de ejecución: ${tiempoDeEjecucion} milisegundos`);
+    
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+  const registrarCsv2 = async () => {
+    try {
+      const inicio = new Date();
+      //await Data.postCsv(datos);
+      await Data.postCsv2(usuario);
+      const fin = new Date();
+      const tiempoDeEjecucion = fin - inicio;
+
+      console.log(`Datos 2 registrados de csv correctamente. Tiempo de ejecución: ${tiempoDeEjecucion} milisegundos`);
+    
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+  const registrarCsv3 = async () => {
+    try {
+      const inicio = new Date();
+      //await Data.postCsv(datos);
+      await Data.postCsv3(usuario);
+      const fin = new Date();
+      const tiempoDeEjecucion = fin - inicio;
+
+      console.log(`Datos 3 registrados de csv  correctamente. Tiempo de ejecución: ${tiempoDeEjecucion} milisegundos`);
+    
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+  const registrarCsv4 = async () => {
+    try {
+      const inicio = new Date();
+      //await Data.postCsv(datos);
+      await Data.postCsv4(usuario);
+      const fin = new Date();
+      const tiempoDeEjecucion = fin - inicio;
+
+      console.log(`Datos 4 registrados de csv correctamente. Tiempo de ejecución: ${tiempoDeEjecucion} milisegundos`);
+    
+    } catch (error) {
+      console.error("Error al registrar datos:", error);
+    }
+  };
+  const registrarCsv5 = async () => {
+    try {
+      const inicio = new Date();
+      //await Data.postCsv(datos);
+      await Data.postCsv5(usuario);
+      const fin = new Date();
+      const tiempoDeEjecucion = fin - inicio;
+
+      console.log(`Datos 5 registrados de csv correctamente. Tiempo de ejecución: ${tiempoDeEjecucion} milisegundos`);
+    
     } catch (error) {
       console.error("Error al registrar datos:", error);
     }
@@ -190,12 +252,14 @@ function App() {
           />
         </div>
         <div>
-          <button onClick={registrarCsv}>Cargar csv</button>
+        <button onClick={() => { registrarCsv(); registrarCsv2(); registrarCsv3(); registrarCsv4(); registrarCsv5(); }}>Cargar csv</button>
+         {/* <button onClick={ registrarCsv}>Cargar csv</button>*/}
         </div>
 
 
         <div className='btns'>
           <button onClick={registrarDatos}>Analizar datos de csv</button>
+          {/*<button onClick={() => { registrarDatos(); registrarDatosdos(); registrarDatostres(); registrarDatoscuatro(); registrarDatoscinco(); }}>Api1 , Api2 ,Api3, Api4, Api5</button>*/}
           <button onClick={() => { registrarDatos(); registrarDatosdos(); registrarDatostres(); registrarDatoscuatro(); registrarDatoscinco(); }}>Api1 , Api2 ,Api3, Api4, Api5</button>
           <button onClick={() => { registrarDatos(); }}>Api1</button>
           <button onClick={() => { registrarDatosdos() }}>Api2</button>

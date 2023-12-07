@@ -1,0 +1,51 @@
+version: '3.8'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  api:
+    build:
+      context: ./Api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - "db"
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db;Database=postgres;User Id=postgres;Password=postgres"
+  
+  node:
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "db"  
+    environment:
+      - PG_DB=postgres
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_HOST=db
+    restart: always
+    
+    
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./ad.sql:/docker-entrypoint-initdb.d/ad.sql
+      - ./pgdata:/var/lib/postgresql/data
+   
+
+volumes:
+  pgdata: {}

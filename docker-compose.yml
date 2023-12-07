@@ -16,22 +16,15 @@ services:
     environment:
       ConnectionStrings__DefaultConnection: "Host=db;Database=postgres;User Id=postgres;Password=postgres"
   
-  node:
+  react:
     build:
-      context: ./node
-      dockerfile: Dockerfile
+      context: ./react
     ports:
       - "3000:3000"
     depends_on:
-      - "db"  
-    environment:
-      - PG_DB=postgres
-      - PG_USER=postgres
-      - PG_PASSWORD=postgres
-      - PG_HOST=db
-    restart: always
-    
-    
+      - "api"
+    networks:
+      - dev
 
   db:
     image: postgres:latest

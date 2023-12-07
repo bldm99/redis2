@@ -1,27 +1,62 @@
 import axios from "axios";
 
-const redis = "http://ip172-18-0-83-clj6qg6fml8g00ak7csg-5000.direct.labs.play-with-docker.com/";
-const redis2 = "http://ip172-18-0-79-clivus0gftqg008se760-5001.direct.labs.play-with-docker.com/";
-const redis3 = "http://ip172-18-0-79-clivus0gftqg008se760-5002.direct.labs.play-with-docker.com/";
-const redis4 = "http://ip172-18-0-79-clivus0gftqg008se760-5003.direct.labs.play-with-docker.com/";
-const redis5 = "http://ip172-18-0-79-clivus0gftqg008se760-5004.direct.labs.play-with-docker.com/";
+const redis = "http://ip172-18-0-82-clob8issnmng00dhiefg-5000.direct.labs.play-with-docker.com/";
+const redis2 = "http://ip172-18-0-82-clob8issnmng00dhiefg-5001.direct.labs.play-with-docker.com/";
+const redis3 = "http://ip172-18-0-84-clob8issnmng00dhiefg-5002.direct.labs.play-with-docker.com/";
+const redis4 = "http://ip172-18-0-84-clob8issnmng00dhiefg-5003.direct.labs.play-with-docker.com/";
+const redis5 = "http://ip172-18-0-85-clob8issnmng00dhiefg-5004.direct.labs.play-with-docker.com/";
 
 
 
-const net = "http://ip172-18-0-40-cldnes0gftqg00e6e1a0-8080.direct.labs.play-with-docker.com/"
+const net = "http://localhost:5251/"
 
 
 //Registrando datos de csv a redis
-export const postCsv = async (obj) => {
-    try {-
+export const postCsv = async (user) => {
+    try {
         await axios.post(`${redis}api/csv`, {
-            obj
+            user
         });
     } catch (error) {
         console.log(error);
     }
 };
-
+export const postCsv2 = async (user) => {
+    try {
+        await axios.post(`${redis2}apix/csv`, {
+            user
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const postCsv3 = async (user) => {
+    try {
+        await axios.post(`${redis3}apiz/csv`, {
+            user
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const postCsv4 = async (user) => {
+    try {
+        await axios.post(`${redis4}apia/csv`, {
+            user
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const postCsv5 = async (user) => {
+    try {
+        await axios.post(`${redis5}apib/csv`, {
+            user
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 //Registrando datos apartir del csv en redis
 export const postRiesgos = async (/*obj ,*/ numero) => {

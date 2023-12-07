@@ -25,8 +25,9 @@ namespace Api.Controllers
 
         public async Task<IActionResult> Listarx()
         {
-            var apiUrl = "https://teamapi.bladimirchipana.repl.co/pruebas";
+            var apiUrl = "http://ip172-18-0-82-clob8issnmng00dhiefg-5000.direct.labs.play-with-docker.com/api/peliculas";
             try
+           
             {
                 // Realiza una solicitud GET a la API externa
                 var response = await _httpClient.GetAsync(apiUrl);
@@ -61,7 +62,7 @@ namespace Api.Controllers
             catch (HttpRequestException)
             {
                 // Maneja las excepciones de solicitud HTTP, por ejemplo, si no se puede conectar a la API externa
-                return StatusCode(500, "Error al conectar con la API externa.");
+                return StatusCode(500, "Error al conectar con la API externa de flask.");
             }
         }
     }
