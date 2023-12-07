@@ -28,7 +28,7 @@ RUN npm install
 RUN npm run build
 
 # Expone el puerto 3000 para acceder a la aplicación
-EXPOSE 3000
+EXPOSE 5173
 
 # Comando para iniciar la aplicación cuando el contenedor se ejecute
 CMD ["npm", "start"]
