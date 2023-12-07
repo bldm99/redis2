@@ -20,7 +20,7 @@ services:
     build:
       context: ./react
     ports:
-      - "3000:3000"
+      - "3000:5173"
     depends_on:
       - "api"
     networks:
@@ -42,3 +42,4 @@ services:
 
 volumes:
   pgdata: {}
+
